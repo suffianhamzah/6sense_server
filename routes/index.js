@@ -65,7 +65,7 @@ router.post('/doors/update', function(req, res, next){
 				name: req.body.name,
 				gender: 'male',
 				status: 'clean',
-				floor: 'F2',
+				floor: '2',
 				count: 1
 			});
 
