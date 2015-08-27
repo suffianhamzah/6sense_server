@@ -9,8 +9,8 @@ var app = express();
 /*DB stuff*/
 var mongoose = require('mongoose');
 
-
-mongoose.connect(MONGOLAB_URI+'/news');
+//hahhaa
+mongoose.connect(MONGOLAB_URI +'/news');
 require('./models/Doors');
 
 /*m2x stuff*/
