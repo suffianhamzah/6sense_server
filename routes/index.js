@@ -63,6 +63,9 @@ router.post('/doors/update', function(req, res, next){
 				var newdoor = new Door({
 				device_id: req.body.device_id,
 				name: req.body.name,
+				gender: 'male',
+				status: 'clean',
+				floor: 'F2',
 				count: 1
 			});
 
@@ -80,11 +83,30 @@ router.post('/doors/update', function(req, res, next){
 		}
 	});
 });
+
+/*PUT Update toilet after clear*/
+router.put('/doors/clean', function(req,res,next){
+	var query = {"device_id": req.body.device_id};
+
+	Door.findOne(query, function(err, door){
+		if (err) { return next(err);}
+
+		if (door === null)
+		{
+			res.json({"Message":"Door Does not Exist!"})
+		}
+		else
+		{
+			door.clean(function(err,door){
+				if (err) {return err;}
+				res.json(door);
+			})
+		}
+	});
+});
 /*GET a door*/
 //router.get('/doors/:door_id', function(req,res))
-module.exports = router;
 
-// FROM m2x API
 router.get('/device', function(req,res) {
 	m2xClient.devices.list(function(response) {
     if (response.isSuccess()) {
@@ -97,6 +119,13 @@ router.get('/device', function(req,res) {
     }
 });
 });
+
+
+module.exports = router;
+
+
+
+
 
 // TO web app
 // /api/doors -
