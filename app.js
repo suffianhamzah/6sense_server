@@ -5,6 +5,16 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+/*DB stuff*/
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/news');
+require('./models/Doors');
+
+/*m2x stuff*/
+var config = require("./config/config");
+// var M2X = require("m2x");
+// var m2xClient = new M2X(config.api_key);
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
