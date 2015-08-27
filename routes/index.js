@@ -7,12 +7,12 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/')
+
 
 module.exports = router;
 
 // FROM
 
 // TO web app
-/api/doors -
-/api/
+// /api/doors -
+// /api/
