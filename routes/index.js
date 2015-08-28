@@ -117,6 +117,7 @@ router.put('/doors/edit', function(req,res,next){
 		}
 		else
 		{
+			door.name = req.body.name;
 			door.gender = req.body.gender;
 			door.floor = req.body.floor;
 			door.save(function(err,door){
