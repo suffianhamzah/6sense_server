@@ -44,7 +44,7 @@ router.delete('/doors/delete', function(req,res, next){
             if (err) {
                 console.log(err)
             } else {
-                res.end('success');
+                res.json({"message":'success'});
             }
         }
     );
