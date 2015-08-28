@@ -104,6 +104,29 @@ router.put('/doors/clean', function(req,res,next){
 		}
 	});
 });
+
+router.put('/doors/edit', function(req,res,next){
+	var query = {"device_id": req.body.device_id};
+
+	Door.findOne(query, function(err, door){
+		if (err) { return next(err);}
+
+		if (door === null)
+		{
+			res.json({"Msg":"Door Does not Exist"});
+		}
+		else
+		{
+			door.gender = req.body.gender;
+			door.floor = req.body.floor;
+			door.save(function(err,door){
+				if(err){return next(err);}
+
+				res.json(door);
+			})
+		}
+	});
+})
 /*GET a door*/
 //router.get('/doors/:door_id', function(req,res))
 
