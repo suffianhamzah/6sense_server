@@ -17,3 +17,4 @@ Clears DB
 PUT /api/doors/clean
 Updates Count and Room Status
 
+The main website can be seen on loopee.herokuapp.com
